@@ -1,18 +1,18 @@
-import "./UserDetailsCard.css";
-import Loader from "../../Assets/Loader/Loader";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import React, { useCallback } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios, { AxiosError, AxiosResponse } from "axios";
-import { HiUsers, HiUser } from "react-icons/hi";
-import { BiGitRepoForked } from "react-icons/bi";
-import { FaGithubSquare } from "react-icons/fa";
-import { AiFillGoogleCircle } from "react-icons/ai";
-import { IUser } from "../../Interfaces/IUsers";
+import './UserDetailsCard.css';
+import Loader from '../../Assets/Loader/Loader';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import React, { useCallback } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios, { AxiosError, AxiosResponse } from 'axios';
+import { HiUsers, HiUser } from 'react-icons/hi';
+import { BiGitRepoForked } from 'react-icons/bi';
+import { FaGithubSquare } from 'react-icons/fa';
+import { AiFillGoogleCircle } from 'react-icons/ai';
+import { IUser } from '../../Interfaces/IUsers';
 
 const UserDetailsCard = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const UserDetailsCard = () => {
   const [user, setUser] = useState<IUser>();
   const [isLoading, setLoading] = useState(false);
 
-  let tokenStr = "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";
+  const tokenStr = process.env.REACT_APP_GITHUB_PAT;
 
   const setUrl = (userId: string) => {
     return `https://api.github.com/users/${userId}`;

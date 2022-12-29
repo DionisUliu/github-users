@@ -1,14 +1,14 @@
-import "./UserListView.css";
-import axios, { AxiosError } from "axios";
-import { useEffect, useState } from "react";
-import React from "react";
-import UserCard from "../UserCard/UserCard";
-import Button from "react-bootstrap/Button";
-import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../Assets/Loader/Loader";
-import { RootState } from "../../Store/store";
+import './UserListView.css';
+import axios, { AxiosError } from 'axios';
+import { useEffect, useState } from 'react';
+import React from 'react';
+import UserCard from '../UserCard/UserCard';
+import Button from 'react-bootstrap/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../../Assets/Loader/Loader';
+import { RootState } from '../../Store/store';
 
-export const FETCH_USERS = "FETCH_USERS";
+export const FETCH_USERS = 'FETCH_USERS';
 let initial = true;
 
 const UserListView = () => {
@@ -21,7 +21,7 @@ const UserListView = () => {
   const setUrl = (perPage: number, since: number) => {
     return `https://api.github.com/users?per_page=${perPage}&since=${since}`;
   };
-  let tokenStr = "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";
+  const tokenStr = process.env.REACT_APP_GITHUB_PAT;
 
   const getAllUsers = async (since = 0) => {
     setLoading(true);
